@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombeiros - Consultas</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            transition: .4s;
+            color: #fff;
+            cursor: pointer;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+        }
+        .card-header:hover {
+            transition: .4s;
+            background-color: #0056b3;
+        
+        }
+        .list-group-item {
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+        .icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Bombeiros</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../trainings/schedule-trainings.html">Formações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../appointments/schedule-appointments.html">Consultas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Marcar Consulta</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="icon"><i class="far fa-calendar-alt"></i></p>
+                        <p class="lead">Marque uma consulta com os bombeiros.</p>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name">Nome do Paciente:</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="doctor">Nome do Médico:</label>
+                                <input type="text" id="doctor" name="doctor" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="date" class="form-label">Data:</label>
+                                <input type="date" id="date" name="date" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="time" class="form-label">Hora:</label>
+                                <input type="time" id="time" name="time" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="location" class="form-label">Local:</label>
+                                <input type="text" id="location" name="location" class="form-control" required>
+                            </div>
+                            <button type="button" onclick="handleFormSubmission(event)" class="btn btn-primary">Agendar Consulta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header" onclick="handleInfoClick()" id="consultas">
+                        <h5 class="card-title">Consultas Marcadas</h5>
+                        <i id="expandIcon" class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="card-body" id="displaySection">
+                        <ul id="appointmentList" class="list-group">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="schedule-appts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
