@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="question-box">
+            <h1 class="header_text">Will you be my Valentine?</h1>
+            <div class="buttons">
+                <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        function moveButton() {
+            var button = document.getElementById('noButton');
+            var buttonWidth = button.offsetWidth;
+            var buttonHeight = button.offsetHeight;
+
+            // Random x and y positions within the viewport, ensuring button stays within bounds
+            var x = Math.random() * (window.innerWidth - buttonWidth); 
+            var y = Math.random() * (window.innerHeight - buttonHeight);
+
+            button.style.position = 'absolute';  // Position it absolutely within its parent
+            button.style.left = `${x}px`;       // Set the random x position
+            button.style.top = `${y}px`;        // Set the random y position
+        }
+    </script>
+</body>
+</html>

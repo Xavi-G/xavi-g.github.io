@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./style/css/yes_styles.css">
+        
+    </head> 
+    <body>
+        <div class="container">
+            <div >
+                <h1 class = "header_text">Youpi !!! </h1>
+                <br>
+            </div>
+            <div class="gif_container">
+                <img src="https://media.giphy.com/media/i6MoONcPnvWuQwIQd4/giphy.gif?cid=790b7611s96e7xsnsqqsi0gwfa5ryn2w5bi84iuywfoo5hx0&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cute animated illustration">
+            </div>
+            <p class = "header_text">Obrigado por seres a minha pessoa<br>
+                <small style="font-size: 14px;">Amo-te :)</small>
+            </p>
+        </div>
+        <script>
+            async function MakeRequest(url, method = "GET", body = null) {
+                try {
+                    var options = {
+                        method,
+                        headers: {
+                            "Content-Type": "application/json", 
+                            "Authorization": "App 43c5cf9d01d62b51835b02eebc217a15-7aea616d-23e6-4f88-884b-f311a4efd668",
+                            "Accept": "application/json"
+                        }
+                    }
+
+                    if (body && method !== "GET") {
+                        options.body = JSON.stringify(body);
+                    }
+                    
+                    const response = await fetch(url, options);
+                    
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok " + response.statusText);
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error("There was a problem with the fetch operation:", error);
+                    throw error;
+                }
+            }
+            
+            async function enviarSMS() {
+                var SMS = 
+                {
+                    "messages": [
+                        {
+                            "destinations": [
+                                {
+                                    "to": "351936199970"
+                                }
+                            ],
+                            "from": "Cupido",
+                            "text": "Olá Marisa, estou-te a mandar mensagem porque o teu namorado é um burro do caralho e nunca sabe como te agradar.\r\n\r\nEntão, aqui vai: https://bit.ly/4hJtKfZ \r\n\r\nO que achas? Parece-me divertido o suficiente para o dia dos namorados. Aproveita e dá-lhe um pontapé na pila para ver se ele atina.\r\nNão precisas de me agradecer."
+                        }
+                    ]
+                }
+                
+                var request = await MakeRequest("https://jjz684.api.infobip.com/sms/2/text/advanced", "POST", SMS);
+                console.log(request);
+            }
+            
+            window.addEventListener('load', enviarSMS());
+                        
+       </script>
+    </body> 
+</html>
